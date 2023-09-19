@@ -15,4 +15,4 @@
 * **Contact**
 *
 * 
-If you discover a security vulnerability within Laravel, please send an e-mail to Hasibul Hamim via [taylor@laravel.com](hasibulhamim2020@gmail.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Hasibul Hamim via [hasibulhamim2020@gmail.com](hasibulhamim2020@gmail.com). All security vulnerabilities will be promptly addressed.
