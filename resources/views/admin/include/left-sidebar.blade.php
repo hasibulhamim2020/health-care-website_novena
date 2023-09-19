@@ -38,8 +38,8 @@
                         </div>
                         <small class="mb-0">Manage Categories</small>
                     </div>
-                    <a href="app-file-manager.html" class="list-group-item"><i class="bi bi-archive"></i>Category Manager</a>
-                    <a href="app-to-do.html" class="list-group-item"><i class="bi bi-check2-square"></i>Category Create</a>
+                    <a href="{{ route('categories.index') }}" class="list-group-item"><i class="bi bi-archive"></i>Category Manager</a>
+                    <a href="{{ route('categories.create') }}" class="list-group-item"><i class="bi bi-check2-square"></i>Category Create</a>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 ///
 ///
 /////////////Front End Route start /////////////////
@@ -31,7 +32,7 @@ Route::middleware([
 ///
 /////////////Back End Route start ////////////////////
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-
+    Route::resources(['categories'=>CategoryController::class]);
 /////////////Back End Route end //////////////////////
 ///
 ///
