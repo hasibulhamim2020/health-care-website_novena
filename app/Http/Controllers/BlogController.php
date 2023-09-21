@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    private static $blogData;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.blog.index',[
+            'blogs'=>Blog::all()
+        ]);
     }
 
     /**
@@ -19,7 +22,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blog.create');
     }
 
     /**
@@ -27,7 +30,8 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Blog::saveCategory($request);
+        return redirect(route('categories.index'));
     }
 
     /**
@@ -35,7 +39,8 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        Category::statusCheck($id);
+        return back();
     }
 
     /**
@@ -43,7 +48,9 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.category.edit',[
+            'category'=>Category::find($id)
+        ]);
     }
 
     /**
@@ -51,7 +58,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Category::saveCategory($request,$id);
+        return redirect(route('categories.index'));
     }
 
     /**
@@ -59,6 +67,8 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        self::$categoryData = Category::find($id);
+        self::$categoryData->delete();
+        return back();
     }
 }
