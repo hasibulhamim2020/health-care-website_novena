@@ -33,6 +33,7 @@ Route::middleware([
 /////////////Back End Route start ////////////////////
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::resources(['categories'=>CategoryController::class]);
+    Route::resources(['blogs'=>BlogController::class]);
 /////////////Back End Route end //////////////////////
 ///
 ///
