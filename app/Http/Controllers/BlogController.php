@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -22,7 +24,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        return view('admin.blog.create',[
+            'categories'=>Category::all()
+        ]);
     }
 
     /**
@@ -30,8 +34,9 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        Blog::saveCategory($request);
-        return redirect(route('categories.index'));
+//        return $request
+        Blog::saveInfo($request);
+        return redirect(route('blogs.index'));
     }
 
     /**
@@ -39,7 +44,7 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        Category::statusCheck($id);
+        Blog::statusCheck($id);
         return back();
     }
 
@@ -48,8 +53,9 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.category.edit',[
-            'category'=>Category::find($id)
+        return view('admin.blog.edit',[
+            'blog'=>Blog::find($id),
+            'categories'=>Category::all()
         ]);
     }
 
@@ -58,8 +64,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Category::saveCategory($request,$id);
-        return redirect(route('categories.index'));
+        Blog::saveInfo($request,$id);
+        return redirect(route('blogs.index'));
     }
 
     /**
@@ -67,8 +73,13 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        self::$categoryData = Category::find($id);
-        self::$categoryData->delete();
+        self::$blogData = Blog::find($id);
+        if (self::$blogData->image){
+            if (file_exists(self::$blogData->image)){
+                unlink(self::$blogData->image);
+            }
+        }
+        self::$blogData->delete();
         return back();
     }
 }
