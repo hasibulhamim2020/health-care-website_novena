@@ -27,11 +27,11 @@
                             <td class="text-uppercase">{{ $category->category_name }}</td>
                             <td>{{ $category->status ==1? 'Active' : 'Inactive' }}</td>
                             <td>
-                                <a href="{{ route('categories.show',$category->id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                                <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-sm btn-secondary">Edit</a>
                                 @if($category->status == 1)
-                                    <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-sm btn-warning">Active</a>
+                                    <a href="{{ route('categories.show',$category->id) }}" class="btn btn-sm btn-warning">Active</a>
                                 @else
-                                    <a href="{{ route('categories.edit',$category->id) }}" class="btn btn-sm btn-warning">Active</a>
+                                    <a href="{{ route('categories.show',$category->id) }}" class="btn btn-sm btn-warning">Active</a>
                                 @endif
                                 <br>
                                 <br>

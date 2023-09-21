@@ -40,10 +40,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-//        return $id;
-        return view('admin.category.edit',[
-            'category'=>Category::find($id)
-        ]);
+        Category::statusCheck($id);
+        return back();
     }
 
     /**
@@ -51,8 +49,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        Category::statusCheck($id);
-        return back();
+        return view('admin.category.edit',[
+            'category'=>Category::find($id)
+        ]);
     }
 
     /**
