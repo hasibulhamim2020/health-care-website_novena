@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('front-end.home.home');
+        return view('front-end.home.home',[
+            'blogs'=>Blog::all()
+        ]);
     }
 
     public function about(){
